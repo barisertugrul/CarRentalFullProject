@@ -1,0 +1,146 @@
+﻿using Business.Abstract;
+using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
+using Core.Utilities.Results;
+using DataAccess.Abstract;
+using Entities.Concrete;
+using Entities.DTOs;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Business.Concrete
+{
+    public class RentalManager : IRentalService
+    {
+        IRentalDal _rentalDal;
+
+        public RentalManager(IRentalDal rentalDal)
+        {
+            _rentalDal = rentalDal;
+        }
+
+        [ValidationAspect(typeof(RentalValidator))]
+        [CacheRemoveAspect("IRentalService.Get")]
+        [CacheRemoveAspect("ICarService.Get")]
+        public IResult Add(Rental rental)
+        {
+            //if (CarRentedControl(rental.CarId).Success == false)
+            //{
+            //    return new ErrorResult(Messages.ExistCarRental);
+            //}
+
+            //var result = ValidationTool.Validate(new RentalValidator(_rentalDal), rental);
+            //if (!result.Success)
+            //{
+            //    return new ErrorResult(Messages.ExistCarRental);
+            //}
+
+            IResult result = IsRentableCar(rental);
+            if (!result.Success)
+            {
+                return new ErrorResult(Messages.ExistCarRental);
+            }
+
+            _rentalDal.Add(rental);
+            return new SuccessResult();
+        }
+
+        public IResult IsRentableCar(int carId)
+        {
+            var result = _rentalDal.GetAll(r => r.CarId == carId && r.ReturnDate == null);
+            if(result != null && result.Count > 0)
+            {
+                return new ErrorResult();
+            }
+            return new SuccessResult();
+        }
+
+        [CacheRemoveAspect("IRentalService.Get")]
+        [CacheRemoveAspect("ICarService.Get")]
+        public IResult Delete(Rental rental)
+        {
+            _rentalDal.Delete(rental);
+            return new SuccessResult();
+        }
+
+        [CacheAspect]
+        [PerformanceAspect(5)]
+        public IDataResult<List<Rental>> GetAll()
+        {
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
+        }
+
+        [CacheAspect]
+        public IDataResult<Rental> GetById(int id)
+        {
+            return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.Id == id));
+        }
+
+        [CacheAspect]
+        [PerformanceAspect(10)]
+        public IDataResult<List<RentalDetailDto>> GetAllRentalDetails()
+        {
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetAllDetails());
+        }
+
+        [CacheAspect]
+        public IDataResult<List<RentalDetailDto>> GetRentalDetailsByCarId(int carId)
+        {
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetAllDetailsBy(r => r.CarId == carId));
+        }
+
+        [CacheAspect]
+        public IDataResult<List<RentalDetailDto>> GetRentalDetailsByCustomerId(int customerId)
+        {
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetAllDetailsBy(r => r.CustomerId == customerId));
+        }
+
+        [CacheAspect]
+        public IDataResult<List<Rental>> GetRentalsByCarId(int carId)
+        {
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(r => r.CarId == carId));
+        }
+
+        [CacheAspect]
+        public IDataResult<List<Rental>> GetRentalsByCustomerId(int customerId)
+        {
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(r => r.CustomerId == customerId));
+        }
+
+        [CacheRemoveAspect("IRentalService.Get")]
+        [CacheRemoveAspect("ICarService.Get")]
+        public IResult Update(Rental rental)
+        {
+            IResult result = IsRentableCar(rental, true);
+            if (!result.Success)
+            {
+                return new ErrorResult(Messages.ExistCarRental);
+            }
+
+            _rentalDal.Update(rental);
+            return new SuccessResult();
+        }
+
+        [CacheAspect]
+        public IDataResult<RentalDetailDto> GetRentalDetailsById(int id)
+        {
+            return new SuccessDataResult<RentalDetailDto>(_rentalDal.GetDetails(r => r.Id == id));
+        }
+
+        private IResult IsRentableCar(Rental rental, bool isUpdate = false)
+        {
+            List<Rental> rentalDetail = (isUpdate)
+                ? _rentalDal.GetAll(r => r.CarId == rental.CarId && r.ReturnDate == null && r.Id != rental.Id)
+                : _rentalDal.GetAll(r => r.CarId == rental.CarId && r.ReturnDate == null);
+            if (rentalDetail != null && rentalDetail.Count > 0) {
+                return new ErrorResult();
+            }
+            return new SuccessResult();
+        }
+    }
+}
