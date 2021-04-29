@@ -52,3 +52,17 @@ D:\Projeler\CarRentalFullProject\CarRental_Backend\DataAccess\obj\Debug\netstand
 D:\Projeler\CarRentalFullProject\CarRental_Backend\DataAccess\obj\Debug\netstandard2.0\DataAccess.csproj.CopyComplete
 D:\Projeler\CarRentalFullProject\CarRental_Backend\DataAccess\obj\Debug\netstandard2.0\DataAccess.dll
 D:\Projeler\CarRentalFullProject\CarRental_Backend\DataAccess\obj\Debug\netstandard2.0\DataAccess.pdb
+D:\Projeler\CarRental_Backend\DataAccess\bin\Debug\netstandard2.0\DataAccess.deps.json
+D:\Projeler\CarRental_Backend\DataAccess\bin\Debug\netstandard2.0\DataAccess.dll
+D:\Projeler\CarRental_Backend\DataAccess\bin\Debug\netstandard2.0\DataAccess.pdb
+D:\Projeler\CarRental_Backend\DataAccess\bin\Debug\netstandard2.0\Core.dll
+D:\Projeler\CarRental_Backend\DataAccess\bin\Debug\netstandard2.0\Entities.dll
+D:\Projeler\CarRental_Backend\DataAccess\bin\Debug\netstandard2.0\Core.pdb
+D:\Projeler\CarRental_Backend\DataAccess\bin\Debug\netstandard2.0\Entities.pdb
+D:\Projeler\CarRental_Backend\DataAccess\obj\Debug\netstandard2.0\DataAccess.csprojAssemblyReference.cache
+D:\Projeler\CarRental_Backend\DataAccess\obj\Debug\netstandard2.0\DataAccess.AssemblyInfoInputs.cache
+D:\Projeler\CarRental_Backend\DataAccess\obj\Debug\netstandard2.0\DataAccess.AssemblyInfo.cs
+D:\Projeler\CarRental_Backend\DataAccess\obj\Debug\netstandard2.0\DataAccess.csproj.CoreCompileInputs.cache
+D:\Projeler\CarRental_Backend\DataAccess\obj\Debug\netstandard2.0\DataAccess.csproj.CopyComplete
+D:\Projeler\CarRental_Backend\DataAccess\obj\Debug\netstandard2.0\DataAccess.dll
+D:\Projeler\CarRental_Backend\DataAccess\obj\Debug\netstandard2.0\DataAccess.pdb

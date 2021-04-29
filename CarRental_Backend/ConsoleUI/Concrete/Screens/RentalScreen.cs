@@ -46,7 +46,7 @@ namespace ConsoleUI.Concrete.Screens
                 Console.WriteLine(Messages.InvalidDate);
                 consoleVal = Console.ReadLine();
             }
-            rental.RentDate = rentDate;
+            rental.RentStartDate = rentDate;
             //rental.ReturnDate = null;
 
             Console.WriteLine(_rentalManager.Add(rental).Message);
@@ -131,7 +131,7 @@ namespace ConsoleUI.Concrete.Screens
                         Console.WriteLine(Messages.InvalidDate);
                         consoleVal = Console.ReadLine();
                     }
-                    rental.RentDate = rentDate;
+                    rental.RentStartDate = rentDate;
 
                     Console.Write(Messages.TypeRentalDate);
                     consoleVal = Console.ReadLine();

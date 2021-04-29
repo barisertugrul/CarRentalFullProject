@@ -17,7 +17,17 @@ namespace Entities.DTOs
         public string LastName { get; set; }
         public string Email { get; set; }
         public string CompanyName { get; set; }
-        public DateTime RentDate { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime RentStartDate { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime RentEndDate { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? ReturnDate { get; set; }
+        public decimal Amount { get; set; }
+        public bool PayConfirm { get; set; }
     }
 }

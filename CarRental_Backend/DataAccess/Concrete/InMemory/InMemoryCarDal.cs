@@ -1,4 +1,6 @@
-﻿using DataAccess.Abstract;
+﻿using Core.DataAccess;
+using Core.Utilities.Results;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
@@ -24,10 +26,11 @@ namespace DataAccess.Concrete.InMemory
                 new Car { CarId = 6, BrandId = 9, ColorId = 9, ModelYear = 2012, DailyPrice = 100, Description = "Kiralık mor Tofaş" },
         };
         }
-        public void Add(Car car)
+        public Car Add(Car car)
         {
             car.CarId = LastIndex() + 1;
             _cars.Add(car);
+            return car;
         }
 
         public void Delete(Car car)

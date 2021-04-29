@@ -14,6 +14,7 @@ namespace Entities.DTOs
         public string ColorName { get; set; }
         public short ModelYear { get; set; }
         public decimal DailyPrice { get; set; }
+        public int MinFindeksPuan { get; set; }
         public string Description { get; set; }
         public List<CarImage> Images { get; set; }
     }

@@ -43,3 +43,15 @@ D:\Projeler\CarRentalFullProject\CarRental_Backend\Entities\obj\Debug\netstandar
 D:\Projeler\CarRentalFullProject\CarRental_Backend\Entities\obj\Debug\netstandard2.0\Entities.csproj.CopyComplete
 D:\Projeler\CarRentalFullProject\CarRental_Backend\Entities\obj\Debug\netstandard2.0\Entities.dll
 D:\Projeler\CarRentalFullProject\CarRental_Backend\Entities\obj\Debug\netstandard2.0\Entities.pdb
+D:\Projeler\CarRental_Backend\Entities\bin\Debug\netstandard2.0\Entities.deps.json
+D:\Projeler\CarRental_Backend\Entities\bin\Debug\netstandard2.0\Entities.dll
+D:\Projeler\CarRental_Backend\Entities\bin\Debug\netstandard2.0\Entities.pdb
+D:\Projeler\CarRental_Backend\Entities\bin\Debug\netstandard2.0\Core.dll
+D:\Projeler\CarRental_Backend\Entities\bin\Debug\netstandard2.0\Core.pdb
+D:\Projeler\CarRental_Backend\Entities\obj\Debug\netstandard2.0\Entities.csprojAssemblyReference.cache
+D:\Projeler\CarRental_Backend\Entities\obj\Debug\netstandard2.0\Entities.AssemblyInfoInputs.cache
+D:\Projeler\CarRental_Backend\Entities\obj\Debug\netstandard2.0\Entities.AssemblyInfo.cs
+D:\Projeler\CarRental_Backend\Entities\obj\Debug\netstandard2.0\Entities.csproj.CoreCompileInputs.cache
+D:\Projeler\CarRental_Backend\Entities\obj\Debug\netstandard2.0\Entities.csproj.CopyComplete
+D:\Projeler\CarRental_Backend\Entities\obj\Debug\netstandard2.0\Entities.dll
+D:\Projeler\CarRental_Backend\Entities\obj\Debug\netstandard2.0\Entities.pdb

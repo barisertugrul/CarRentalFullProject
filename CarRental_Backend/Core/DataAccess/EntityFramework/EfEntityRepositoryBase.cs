@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using Core.Utilities.Results;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Core.DataAccess.EntityFramework
 {
@@ -12,7 +14,7 @@ namespace Core.DataAccess.EntityFramework
         where TEntity : class, IEntity, new()
         where TContext : DbContext, new()
     {
-        public void Add(TEntity entity)
+        public TEntity Add(TEntity entity)
         {
             //Todo return new item index
             using (TContext context = new TContext())
@@ -20,6 +22,8 @@ namespace Core.DataAccess.EntityFramework
                 var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Added;
                 context.SaveChanges();
+                addedEntity.GetDatabaseValues();
+                return entity;
             }
         }
 

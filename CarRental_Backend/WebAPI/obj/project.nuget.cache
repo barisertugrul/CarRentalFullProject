@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "Li0o/XN5WvM18qe27MWsatjOajGJqIuhpfAnPGJX6ZOsSSTzyk3GDpdqz9euepwO3XOWEfbtrpP/qLX2QvpLNg==",
+  "dgSpecHash": "goVt2gmKBHkkkt9UJpj1y/EP0etAsv9viOj1Izse4NcJTTHuVxHkULbod23jtE6e0TgZzoYpvzdiyAvfqGfS2A==",
   "success": true,
-  "projectFilePath": "D:\\Projeler\\CarRentalFullProject\\CarRental_Backend\\WebAPI\\WebAPI.csproj",
+  "projectFilePath": "D:\\Projeler\\CarRental_Backend\\WebAPI\\WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\baris\\.nuget\\packages\\autofac\\6.1.0\\autofac.6.1.0.nupkg.sha512",
     "C:\\Users\\baris\\.nuget\\packages\\autofac.extensions.dependencyinjection\\7.1.0\\autofac.extensions.dependencyinjection.7.1.0.nupkg.sha512",
     "C:\\Users\\baris\\.nuget\\packages\\autofac.extras.dynamicproxy\\6.0.0\\autofac.extras.dynamicproxy.6.0.0.nupkg.sha512",
     "C:\\Users\\baris\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
-    "C:\\Users\\baris\\.nuget\\packages\\fluentvalidation\\9.5.1\\fluentvalidation.9.5.1.nupkg.sha512",
+    "C:\\Users\\baris\\.nuget\\packages\\fluentvalidation\\10.0.4\\fluentvalidation.10.0.4.nupkg.sha512",
     "C:\\Users\\baris\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.11\\microsoft.aspnetcore.authentication.jwtbearer.3.1.11.nupkg.sha512",
     "C:\\Users\\baris\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.2\\microsoft.aspnetcore.http.2.2.2.nupkg.sha512",
     "C:\\Users\\baris\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",

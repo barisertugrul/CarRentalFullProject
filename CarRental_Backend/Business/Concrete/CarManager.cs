@@ -23,7 +23,7 @@ namespace Business.Concrete
     {
         ICarDal _carDal;
         ICarImageService _carImageService;
-        string defaultImagePath = Environment.CurrentDirectory + @"\images\DefaultCarImage.jpg";
+        string _defaultImagePath = @"\Images\DefaultCarImage.jpg";
 
         public CarManager(ICarDal carDal, ICarImageService carImageService)
         {
@@ -71,7 +71,6 @@ namespace Business.Concrete
         public IDataResult<List<Car>> GetAll()
         {
             var fileFolderPath = AppContext.BaseDirectory + @"Images";
-            Console.WriteLine("xxxxxxxxxxxxxxxx Path xxxxxxxxxxxx:" + fileFolderPath);
 
             return new SuccessDataResult<List<Car>>(_carDal.GetAll());
         }
@@ -119,26 +118,30 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<CarDetailDto> GetCarDetailsById(int carId)
         {
-            return new SuccessDataResult<CarDetailDto>(_carDal.GetDetails(c=> c.CarId == carId));
+            return new SuccessDataResult<CarDetailDto>(_carDal.GetDetails(c=> c.CarId == carId, _defaultImagePath));
         }
 
         [CacheAspect]
         public IDataResult<List<CarDetailDto>> GetCarDetailsByColorId(int colorId)
         {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllDetailsBy(c => c.ColorId == colorId, defaultImagePath));
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllDetailsBy(c => c.ColorId == colorId, _defaultImagePath));
         }
 
         [CacheAspect]
         public IDataResult<List<CarDetailDto>> GetCarDetailsByBrandId(int brandId)
         {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllDetailsBy(c => c.BrandId == brandId, defaultImagePath));
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllDetailsBy(c => c.BrandId == brandId, _defaultImagePath));
         }
 
         [CacheAspect]
         public IDataResult<List<CarDetailDto>> GetCarDetailsByBrandAndColorId(int brandId, int colorId)
         {
             Expression<Func<Car,Boolean>> filter;
-            if (colorId > 0 && brandId > 0)
+            if (colorId == 0 && brandId == 0)
+            {
+                return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllDetails(_defaultImagePath));
+            }
+            else if (colorId > 0 && brandId > 0)
             {
                 filter = c => c.BrandId == brandId && c.ColorId == colorId;
             }
@@ -151,7 +154,7 @@ namespace Business.Concrete
                 filter = c => c.ColorId == colorId;
             }
 
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllDetailsBy(filter, defaultImagePath));
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllDetailsBy(filter, _defaultImagePath));
         }
 
         [CacheAspect]
@@ -176,13 +179,13 @@ namespace Business.Concrete
         [PerformanceAspect(10)]
         public IDataResult<List<CarDetailWithImagesDto>> GetAllCarDetailsWithImages()
         {
-            return new SuccessDataResult<List<CarDetailWithImagesDto>>(_carDal.GetAllDetailsWithImages(defaultImagePath));
+            return new SuccessDataResult<List<CarDetailWithImagesDto>>(_carDal.GetAllDetailsWithImages(_defaultImagePath));
         }
 
         [CacheAspect]
         public IDataResult<CarDetailWithImagesDto> GetCarDetailsByIdWithImages(int carId)
         {
-            return new SuccessDataResult<CarDetailWithImagesDto>(_carDal.GetDetailsWithImagesById(carId, defaultImagePath));
+            return new SuccessDataResult<CarDetailWithImagesDto>(_carDal.GetDetailsWithImagesById(carId, _defaultImagePath));
         }
 
         //public IResult Validate(Car car)

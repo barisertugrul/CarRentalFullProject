@@ -12,7 +12,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, RentACarContext>, ICarDal
     {
-        public List<CarDetailDto> GetAllDetails(string defaultImagePath = null)
+        public List<CarDetailDto> GetAllDetails(string defaultImagePath)
         {
             using (RentACarContext context = new RentACarContext())
             {
@@ -32,6 +32,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  ColorName = cl.Name,
                                  ModelYear = c.ModelYear,
                                  DailyPrice = c.DailyPrice,
+                                 MinFindeksPuan = c.MinFindeksPuan,
                                  Description = c.Description,
                                  Images = !(carImages.Any(cim => cim.CarId == c.CarId))
                                      ? new List<CarImage>() { new CarImage { Id = 0, CarId = c.CarId, Date = DateTime.Now, ImagePath = defaultImagePath } }
@@ -41,12 +42,12 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        public CarDetailDto GetDetails(Expression<Func<Car, bool>> filter, string defaultImagePath = null)
+        public CarDetailDto GetDetails(Expression<Func<Car, bool>> filter, string defaultImagePath)
         {
             return GetAllDetailsBy(filter, defaultImagePath).SingleOrDefault();
         }
 
-        public List<CarDetailDto> GetAllDetailsBy(Expression<Func<Car, bool>> filter, string defaultImagePath = null)
+        public List<CarDetailDto> GetAllDetailsBy(Expression<Func<Car, bool>> filter, string defaultImagePath)
         {
             using (RentACarContext context = new RentACarContext())
             {
@@ -66,6 +67,7 @@ namespace DataAccess.Concrete.EntityFramework
                              ColorName = cl.Name,
                              ModelYear = c.ModelYear,
                              DailyPrice = c.DailyPrice,
+                             MinFindeksPuan =  c.MinFindeksPuan,
                              Description = c.Description,
                              Images = !(carImages.Any(cim => cim.CarId == c.CarId))
                                  ? new List<CarImage>() { new CarImage { Id = 0, CarId = c.CarId, Date = DateTime.Now, ImagePath = defaultImagePath } }
@@ -76,7 +78,7 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        public List<CarDetailDto> GetRentableDetails(string defaultImagePath = null)
+        public List<CarDetailDto> GetRentableDetails(string defaultImagePath)
         {
             using (RentACarContext context = new RentACarContext())
             {
@@ -112,6 +114,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  ColorName = cl.Name,
                                  ModelYear = c.ModelYear,
                                  DailyPrice = c.DailyPrice,
+                                 MinFindeksPuan = c.MinFindeksPuan,
                                  Description = c.Description,
                                  Images = !(carImages.Any(cim => cim.CarId == c.CarId))
                                      ? new List<CarImage>() { new CarImage { Id = 0, CarId = c.CarId, Date = DateTime.Now, ImagePath = defaultImagePath } }
@@ -122,7 +125,7 @@ namespace DataAccess.Concrete.EntityFramework
 
         }
 
-        public List<CarDetailDto> GetRentedDetails(string defaultImagePath = null)
+        public List<CarDetailDto> GetRentedDetails(string defaultImagePath)
         {
             using (RentACarContext context = new RentACarContext())
             {
@@ -158,6 +161,7 @@ namespace DataAccess.Concrete.EntityFramework
                         ColorName = cl.Name,
                         ModelYear = c.ModelYear,
                         DailyPrice = c.DailyPrice,
+                        MinFindeksPuan = c.MinFindeksPuan,
                         Description = c.Description,
                         Images = !(carImages.Any(cim => cim.CarId == c.CarId))
                         ? new List<CarImage>() { new CarImage { Id = 0, CarId = c.CarId, Date = DateTime.Now, ImagePath = defaultImagePath } }
@@ -167,7 +171,7 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        public List<CarDetailWithImagesDto> GetAllDetailsWithImages(string defaultImagePath = null)
+        public List<CarDetailWithImagesDto> GetAllDetailsWithImages(string defaultImagePath)
         {
             using (RentACarContext context = new RentACarContext())
             {
@@ -196,6 +200,7 @@ namespace DataAccess.Concrete.EntityFramework
                         ColorName = cl.Name,
                         ModelYear = c.ModelYear,
                         DailyPrice = c.DailyPrice,
+                        MinFindeksPuan = c.MinFindeksPuan,
                         Description = c.Description,
                         Images = !(carImages.Any( cim=>cim.CarId==c.CarId))
                         ? new List<CarImage>() { new CarImage { Id = 0, CarId = c.CarId, Date = DateTime.Now, ImagePath = defaultImagePath } }
@@ -207,7 +212,7 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        public CarDetailWithImagesDto GetDetailsWithImagesById(int carId, string defaultImagePath = null)
+        public CarDetailWithImagesDto GetDetailsWithImagesById(int carId, string defaultImagePath)
         {
             using (RentACarContext context = new RentACarContext())
             {
@@ -229,6 +234,7 @@ namespace DataAccess.Concrete.EntityFramework
                         ColorName = cl.Name,
                         ModelYear = c.ModelYear,
                         DailyPrice = c.DailyPrice,
+                        MinFindeksPuan = c.MinFindeksPuan,
                         Description = c.Description,
                         Images = !(carImages.Any(cim => cim.CarId == c.CarId))
                         ? new List<CarImage>() { new CarImage { Id = 0, CarId = c.CarId, Date = DateTime.Now, ImagePath = defaultImagePath } }

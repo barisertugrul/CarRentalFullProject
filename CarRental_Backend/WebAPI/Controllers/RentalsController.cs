@@ -43,9 +43,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getbyid")]
-        public IActionResult GetById(int id)
+        public IActionResult GetById(int rentalId)
         {
-            var result = _rentalService.GetById(id);
+            var result = _rentalService.GetById(rentalId);
             if (result.Success)
             {
                 return Ok(result);
@@ -53,10 +53,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getdetailbyid")]
-        public IActionResult GetDetailsById(int id)
+        [HttpGet("getdetailsbyid")]
+        public IActionResult GetDetailsById(int rentalId)
         {
-            var result = _rentalService.GetRentalDetailsById(id);
+            var result = _rentalService.GetDetailsById(rentalId);
             if (result.Success)
             {
                 return Ok(result);
@@ -112,6 +112,17 @@ namespace WebAPI.Controllers
         public IActionResult Add(Rental rental)
         {
             var result = _rentalService.Add(rental);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost("isrentable")]
+        public IActionResult IsRentable(Rental rental, bool isUpdate = false)
+        {
+            var result = _rentalService.IsRentableCar(rental, isUpdate);
             if (result.Success)
             {
                 return Ok(result);

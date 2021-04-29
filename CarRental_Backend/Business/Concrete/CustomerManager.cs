@@ -78,5 +78,10 @@ namespace Business.Concrete
             _customerDal.Update(customer);
             return new SuccessResult();
         }
+
+        public IDataResult<int> GetFindeksPuani(int customerId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
