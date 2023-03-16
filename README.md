@@ -1,4 +1,4 @@
-# Yazılım Geliştirici Yetiştirme Kampı (C# & Angular) - Car Rental Project  [![version][version-badge]][CHANGELOG]
+# Yazılım Geliştirici Yetiştirme Kampı (C# & Angular) - Car Rental Project (Not completed yet - Development continues.)  [![version][version-badge]][CHANGELOG]
 
 Creative-Tim **[Material Dashboard Angular](https://www.creative-tim.com/product/material-dashboard-angular2/)** Angular template kullannılarak hazırlanmıştır.
 
